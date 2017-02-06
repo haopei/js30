@@ -16,9 +16,7 @@
         <input type="text" name="search" value="" class="search">
         <div class="suggestions"></div>
 
-
         <script>
-
             const searchInput = document.querySelector('.search');
             const suggestions = document.querySelector('.suggestions');
             const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
@@ -69,8 +67,6 @@
 
             // The value inside searchInput is passed to displayMatches' this.value
             searchInput.addEventListener('keyup', displayMatches)
-
-
         </script>
     </body>
 </html>
