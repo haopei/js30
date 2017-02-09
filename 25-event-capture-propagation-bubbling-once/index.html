@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Javascript Event Cature, Propagation, Once</title>
+</head>
+
+    <style media="screen">
+        .box {padding:3rem;border:2pxsolidblack;color:white;}
+        .red {background-color: red}
+        .blue {background-color: blue}
+        .green {background-color: green}
+    </style>
+
+<body>
+
+    <h1>Javascript Event Cature, Propagation, Once</h1>
+
+    <div class="box red" data-name="red-box">
+        red
+        <div class="box blue" data-name="blue-box">
+            blue
+            <div class="box green" data-name="green-box">green</div>
+        </div>
+    </div>
+
+    <div>
+        <strong>You clicked</strong> <span class="clickedValue"></span>
+    </div>
+
+    <script>
+
+    const boxes = document.querySelectorAll('.box');
+
+    function handleClick(e) {
+        const clickedEl = document.querySelector('.clickedValue');
+        clickedEl.innerHTML = this.dataset.name;
+        e.stopPropagation(); // prevents propagation from bubbling up
+    }
+
+    //
+    boxes.forEach(box => box.addEventListener('click', handleClick, {
+        capture: false,
+        // once: true   // removes the event listener after it has been clicked once already
+    }));
+    </script>
+
+</body>
+</html>
